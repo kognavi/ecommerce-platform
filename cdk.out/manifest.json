@@ -1,0 +1,367 @@
+{
+  "version": "39.0.0",
+  "artifacts": {
+    "EcommercePlatformStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "EcommercePlatformStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "EcommercePlatformStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "EcommercePlatformStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a12903e7b686b51d8345f90327a4fe31cd192fffc6477c45428065236ae17c9a.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "EcommercePlatformStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "EcommercePlatformStack.assets"
+      ],
+      "metadata": {
+        "/EcommercePlatformStack/EcommerceVpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpc78AAEAE5"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet1SubnetB145D7E5"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet1RouteTableD5A03AE0"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet1RouteTableAssociationB630962B"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet1DefaultRoute072E30F5"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet1EIP780973CA"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet1NATGatewayD5FD7E84"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet2SubnetE5A084B1"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet2RouteTableE414BF62"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet2RouteTableAssociation3662D2EB"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet2DefaultRoute3C194132"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet2/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet2EIPB13F6C02"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PublicSubnet2/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPublicSubnet2NATGateway90525CA2"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet1SubnetED9BECA1"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet1RouteTableB6B97B89"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet1RouteTableAssociation349E4465"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet1DefaultRouteE32A0075"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet2Subnet046F3A4A"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet2RouteTable385A1511"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet2RouteTableAssociation3FC0D9BE"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcPrivateSubnet2DefaultRouteC117F6B9"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcIGW880FA066"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcVPCGWDA085CCE"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceVpc/RestrictDefaultSecurityGroupCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceVpcRestrictDefaultSecurityGroupCustomResource07FE5724"
+          }
+        ],
+        "/EcommercePlatformStack/LatestNodeRuntimeMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LatestNodeRuntimeMap"
+          }
+        ],
+        "/EcommercePlatformStack/Custom::VpcRestrictDefaultSGCustomResourceProvider": [
+          {
+            "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+            "data": true
+          }
+        ],
+        "/EcommercePlatformStack/Custom::VpcRestrictDefaultSGCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0"
+          }
+        ],
+        "/EcommercePlatformStack/Custom::VpcRestrictDefaultSGCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E"
+          }
+        ],
+        "/EcommercePlatformStack/EcommerceCluster/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EcommerceCluster205F87C9"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/LB/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceLB0336FA88"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/LB/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceLBSecurityGroup5B07F3A0"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/LB/SecurityGroup/to EcommercePlatformStackProductServiceSecurityGroup17F351AB:3000": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceLBSecurityGrouptoEcommercePlatformStackProductServiceSecurityGroup17F351AB300037CB7FB1"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/LB/PublicListener/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceLBPublicListener0973822B"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/LB/PublicListener/ECSGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceLBPublicListenerECSGroupB86E88AE"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/LoadBalancerDNS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceLoadBalancerDNSA04CAF78"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/ServiceURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceServiceURL62291D92"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/TaskDef/TaskRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceTaskDefTaskRole96D10973"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/TaskDef/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceTaskDef7D859D26"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/TaskDef/web/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceTaskDefwebLogGroup44CF91A7"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/TaskDef/ExecutionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceTaskDefExecutionRole06ED1514"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/TaskDef/ExecutionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceTaskDefExecutionRoleDefaultPolicy84DF8348"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/Service": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "minHealthyPercent has not been configured so the default value of 50% is used. The number of running tasks will decrease below the desired count during deployments etc. See https://github.com/aws/aws-cdk/issues/31705 [ack: @aws-cdk/aws-ecs:minHealthyPercent]",
+            "trace": [
+              "Annotations.addMessage (/Users/kamaikenichirou/ecommerce-platform/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1608)",
+              "Annotations.addWarningV2 (/Users/kamaikenichirou/ecommerce-platform/node_modules/aws-cdk-lib/core/lib/annotations.js:1:825)",
+              "new BaseService (/Users/kamaikenichirou/ecommerce-platform/node_modules/aws-cdk-lib/aws-ecs/lib/base/base-service.js:1:8100)",
+              "new FargateService (/Users/kamaikenichirou/ecommerce-platform/node_modules/aws-cdk-lib/aws-ecs/lib/fargate/fargate-service.js:1:2548)",
+              "new ApplicationLoadBalancedFargateService (/Users/kamaikenichirou/ecommerce-platform/node_modules/aws-cdk-lib/aws-ecs-patterns/lib/fargate/application-load-balanced-fargate-service.js:1:3098)",
+              "new EcommercePlatformStack (/Users/kamaikenichirou/ecommerce-platform/lib/ecommerce-platform-stack.ts:21:28)",
+              "Object.<anonymous> (/Users/kamaikenichirou/ecommerce-platform/bin/ecommerce-platform.ts:6:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1196:14)",
+              "Module.m._compile (/Users/kamaikenichirou/ecommerce-platform/node_modules/ts-node/src/index.ts:1618:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1250:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/kamaikenichirou/ecommerce-platform/node_modules/ts-node/src/index.ts:1621:12)",
+              "Module.load (node:internal/modules/cjs/loader:1074:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:909:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/kamaikenichirou/ecommerce-platform/node_modules/ts-node/src/bin.ts:649:14)",
+              "bootstrap (/Users/kamaikenichirou/ecommerce-platform/node_modules/ts-node/src/bin.ts:95:10)",
+              "main (/Users/kamaikenichirou/ecommerce-platform/node_modules/ts-node/src/bin.ts:55:10)",
+              "Object.<anonymous> (/Users/kamaikenichirou/ecommerce-platform/node_modules/ts-node/src/bin.ts:800:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1196:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1250:10)",
+              "Module.load (node:internal/modules/cjs/loader:1074:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:909:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:22:47"
+            ]
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/Service/Service": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductService74C8BAD6"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/Service/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceSecurityGroup41250D39"
+          }
+        ],
+        "/EcommercePlatformStack/ProductService/Service/SecurityGroup/from EcommercePlatformStackProductServiceLBSecurityGroupC0C08C62:3000": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductServiceSecurityGroupfromEcommercePlatformStackProductServiceLBSecurityGroupC0C08C623000BD8BEFA3"
+          }
+        ],
+        "/EcommercePlatformStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/EcommercePlatformStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/EcommercePlatformStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/EcommercePlatformStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "EcommercePlatformStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

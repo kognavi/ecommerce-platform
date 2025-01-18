@@ -1,0 +1,1446 @@
+{
+ "Resources": {
+  "EcommerceVpc78AAEAE5": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/Resource"
+   }
+  },
+  "EcommerceVpcPublicSubnet1SubnetB145D7E5": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/18",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1/Subnet"
+   }
+  },
+  "EcommerceVpcPublicSubnet1RouteTableD5A03AE0": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1/RouteTable"
+   }
+  },
+  "EcommerceVpcPublicSubnet1RouteTableAssociationB630962B": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPublicSubnet1RouteTableD5A03AE0"
+    },
+    "SubnetId": {
+     "Ref": "EcommerceVpcPublicSubnet1SubnetB145D7E5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "EcommerceVpcPublicSubnet1DefaultRoute072E30F5": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "EcommerceVpcIGW880FA066"
+    },
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPublicSubnet1RouteTableD5A03AE0"
+    }
+   },
+   "DependsOn": [
+    "EcommerceVpcVPCGWDA085CCE"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "EcommerceVpcPublicSubnet1EIP780973CA": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1/EIP"
+   }
+  },
+  "EcommerceVpcPublicSubnet1NATGatewayD5FD7E84": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "EcommerceVpcPublicSubnet1EIP780973CA",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "EcommerceVpcPublicSubnet1SubnetB145D7E5"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "EcommerceVpcPublicSubnet1DefaultRoute072E30F5",
+    "EcommerceVpcPublicSubnet1RouteTableAssociationB630962B"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet1/NATGateway"
+   }
+  },
+  "EcommerceVpcPublicSubnet2SubnetE5A084B1": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.64.0/18",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2/Subnet"
+   }
+  },
+  "EcommerceVpcPublicSubnet2RouteTableE414BF62": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2/RouteTable"
+   }
+  },
+  "EcommerceVpcPublicSubnet2RouteTableAssociation3662D2EB": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPublicSubnet2RouteTableE414BF62"
+    },
+    "SubnetId": {
+     "Ref": "EcommerceVpcPublicSubnet2SubnetE5A084B1"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "EcommerceVpcPublicSubnet2DefaultRoute3C194132": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "EcommerceVpcIGW880FA066"
+    },
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPublicSubnet2RouteTableE414BF62"
+    }
+   },
+   "DependsOn": [
+    "EcommerceVpcVPCGWDA085CCE"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "EcommerceVpcPublicSubnet2EIPB13F6C02": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2/EIP"
+   }
+  },
+  "EcommerceVpcPublicSubnet2NATGateway90525CA2": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "EcommerceVpcPublicSubnet2EIPB13F6C02",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "EcommerceVpcPublicSubnet2SubnetE5A084B1"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2"
+     }
+    ]
+   },
+   "DependsOn": [
+    "EcommerceVpcPublicSubnet2DefaultRoute3C194132",
+    "EcommerceVpcPublicSubnet2RouteTableAssociation3662D2EB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PublicSubnet2/NATGateway"
+   }
+  },
+  "EcommerceVpcPrivateSubnet1SubnetED9BECA1": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.128.0/18",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/Subnet"
+   }
+  },
+  "EcommerceVpcPrivateSubnet1RouteTableB6B97B89": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/RouteTable"
+   }
+  },
+  "EcommerceVpcPrivateSubnet1RouteTableAssociation349E4465": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPrivateSubnet1RouteTableB6B97B89"
+    },
+    "SubnetId": {
+     "Ref": "EcommerceVpcPrivateSubnet1SubnetED9BECA1"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/RouteTableAssociation"
+   }
+  },
+  "EcommerceVpcPrivateSubnet1DefaultRouteE32A0075": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "EcommerceVpcPublicSubnet1NATGatewayD5FD7E84"
+    },
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPrivateSubnet1RouteTableB6B97B89"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet1/DefaultRoute"
+   }
+  },
+  "EcommerceVpcPrivateSubnet2Subnet046F3A4A": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.192.0/18",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/Subnet"
+   }
+  },
+  "EcommerceVpcPrivateSubnet2RouteTable385A1511": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/RouteTable"
+   }
+  },
+  "EcommerceVpcPrivateSubnet2RouteTableAssociation3FC0D9BE": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPrivateSubnet2RouteTable385A1511"
+    },
+    "SubnetId": {
+     "Ref": "EcommerceVpcPrivateSubnet2Subnet046F3A4A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/RouteTableAssociation"
+   }
+  },
+  "EcommerceVpcPrivateSubnet2DefaultRouteC117F6B9": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "EcommerceVpcPublicSubnet2NATGateway90525CA2"
+    },
+    "RouteTableId": {
+     "Ref": "EcommerceVpcPrivateSubnet2RouteTable385A1511"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/PrivateSubnet2/DefaultRoute"
+   }
+  },
+  "EcommerceVpcIGW880FA066": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "EcommercePlatformStack/EcommerceVpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/IGW"
+   }
+  },
+  "EcommerceVpcVPCGWDA085CCE": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "EcommerceVpcIGW880FA066"
+    },
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/VPCGW"
+   }
+  },
+  "EcommerceVpcRestrictDefaultSecurityGroupCustomResource07FE5724": {
+   "Type": "Custom::VpcRestrictDefaultSG",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E",
+      "Arn"
+     ]
+    },
+    "DefaultSecurityGroupId": {
+     "Fn::GetAtt": [
+      "EcommerceVpc78AAEAE5",
+      "DefaultSecurityGroup"
+     ]
+    },
+    "Account": {
+     "Ref": "AWS::AccountId"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceVpc/RestrictDefaultSecurityGroupCustomResource/Default"
+   }
+  },
+  "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ],
+    "Policies": [
+     {
+      "PolicyName": "Inline",
+      "PolicyDocument": {
+       "Version": "2012-10-17",
+       "Statement": [
+        {
+         "Effect": "Allow",
+         "Action": [
+          "ec2:AuthorizeSecurityGroupIngress",
+          "ec2:AuthorizeSecurityGroupEgress",
+          "ec2:RevokeSecurityGroupIngress",
+          "ec2:RevokeSecurityGroupEgress"
+         ],
+         "Resource": [
+          {
+           "Fn::Join": [
+            "",
+            [
+             "arn:",
+             {
+              "Ref": "AWS::Partition"
+             },
+             ":ec2:",
+             {
+              "Ref": "AWS::Region"
+             },
+             ":",
+             {
+              "Ref": "AWS::AccountId"
+             },
+             ":security-group/",
+             {
+              "Fn::GetAtt": [
+               "EcommerceVpc78AAEAE5",
+               "DefaultSecurityGroup"
+              ]
+             }
+            ]
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/Custom::VpcRestrictDefaultSGCustomResourceProvider/Role"
+   }
+  },
+  "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "7fa1e366ee8a9ded01fc355f704cff92bfd179574e6f9cfee800a3541df1b200.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0",
+      "Arn"
+     ]
+    },
+    "Runtime": {
+     "Fn::FindInMap": [
+      "LatestNodeRuntimeMap",
+      {
+       "Ref": "AWS::Region"
+      },
+      "value"
+     ]
+    },
+    "Description": "Lambda function for removing all inbound/outbound rules from the VPC default security group"
+   },
+   "DependsOn": [
+    "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/Custom::VpcRestrictDefaultSGCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.7fa1e366ee8a9ded01fc355f704cff92bfd179574e6f9cfee800a3541df1b200",
+    "aws:asset:property": "Code"
+   }
+  },
+  "EcommerceCluster205F87C9": {
+   "Type": "AWS::ECS::Cluster",
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/EcommerceCluster/Resource"
+   }
+  },
+  "ProductServiceLB0336FA88": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     }
+    ],
+    "Scheme": "internet-facing",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "ProductServiceLBSecurityGroup5B07F3A0",
+       "GroupId"
+      ]
+     }
+    ],
+    "Subnets": [
+     {
+      "Ref": "EcommerceVpcPublicSubnet1SubnetB145D7E5"
+     },
+     {
+      "Ref": "EcommerceVpcPublicSubnet2SubnetE5A084B1"
+     }
+    ],
+    "Type": "application"
+   },
+   "DependsOn": [
+    "EcommerceVpcPublicSubnet1DefaultRoute072E30F5",
+    "EcommerceVpcPublicSubnet1RouteTableAssociationB630962B",
+    "EcommerceVpcPublicSubnet2DefaultRoute3C194132",
+    "EcommerceVpcPublicSubnet2RouteTableAssociation3662D2EB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/LB/Resource"
+   }
+  },
+  "ProductServiceLBSecurityGroup5B07F3A0": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Automatically created Security Group for ELB EcommercePlatformStackProductServiceLBCE71763C",
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow from anyone on port 80",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/LB/SecurityGroup/Resource"
+   }
+  },
+  "ProductServiceLBSecurityGrouptoEcommercePlatformStackProductServiceSecurityGroup17F351AB300037CB7FB1": {
+   "Type": "AWS::EC2::SecurityGroupEgress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "DestinationSecurityGroupId": {
+     "Fn::GetAtt": [
+      "ProductServiceSecurityGroup41250D39",
+      "GroupId"
+     ]
+    },
+    "FromPort": 3000,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "ProductServiceLBSecurityGroup5B07F3A0",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "ToPort": 3000
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/LB/SecurityGroup/to EcommercePlatformStackProductServiceSecurityGroup17F351AB:3000"
+   }
+  },
+  "ProductServiceLBPublicListener0973822B": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "ProductServiceLBPublicListenerECSGroupB86E88AE"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "ProductServiceLB0336FA88"
+    },
+    "Port": 80,
+    "Protocol": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/LB/PublicListener/Resource"
+   }
+  },
+  "ProductServiceLBPublicListenerECSGroupB86E88AE": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "Port": 80,
+    "Protocol": "HTTP",
+    "TargetGroupAttributes": [
+     {
+      "Key": "stickiness.enabled",
+      "Value": "false"
+     }
+    ],
+    "TargetType": "ip",
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/LB/PublicListener/ECSGroup/Resource"
+   }
+  },
+  "ProductServiceTaskDefTaskRole96D10973": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/TaskDef/TaskRole/Resource"
+   }
+  },
+  "ProductServiceTaskDef7D859D26": {
+   "Type": "AWS::ECS::TaskDefinition",
+   "Properties": {
+    "ContainerDefinitions": [
+     {
+      "Essential": true,
+      "Image": {
+       "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:6afe3b897290469d7e75a0ad8c7058c11c65c4d4194341c1490efa302aa8ea53"
+      },
+      "LogConfiguration": {
+       "LogDriver": "awslogs",
+       "Options": {
+        "awslogs-group": {
+         "Ref": "ProductServiceTaskDefwebLogGroup44CF91A7"
+        },
+        "awslogs-stream-prefix": "ProductService",
+        "awslogs-region": {
+         "Ref": "AWS::Region"
+        }
+       }
+      },
+      "Name": "web",
+      "PortMappings": [
+       {
+        "ContainerPort": 3000,
+        "Protocol": "tcp"
+       }
+      ]
+     }
+    ],
+    "Cpu": "256",
+    "ExecutionRoleArn": {
+     "Fn::GetAtt": [
+      "ProductServiceTaskDefExecutionRole06ED1514",
+      "Arn"
+     ]
+    },
+    "Family": "EcommercePlatformStackProductServiceTaskDef125A462A",
+    "Memory": "512",
+    "NetworkMode": "awsvpc",
+    "RequiresCompatibilities": [
+     "FARGATE"
+    ],
+    "TaskRoleArn": {
+     "Fn::GetAtt": [
+      "ProductServiceTaskDefTaskRole96D10973",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/TaskDef/Resource"
+   }
+  },
+  "ProductServiceTaskDefwebLogGroup44CF91A7": {
+   "Type": "AWS::Logs::LogGroup",
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/TaskDef/web/LogGroup/Resource"
+   }
+  },
+  "ProductServiceTaskDefExecutionRole06ED1514": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/TaskDef/ExecutionRole/Resource"
+   }
+  },
+  "ProductServiceTaskDefExecutionRoleDefaultPolicy84DF8348": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:GetDownloadUrlForLayer"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":ecr:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":repository/",
+          {
+           "Fn::Sub": "cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}"
+          }
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "ecr:GetAuthorizationToken",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "ProductServiceTaskDefwebLogGroup44CF91A7",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ProductServiceTaskDefExecutionRoleDefaultPolicy84DF8348",
+    "Roles": [
+     {
+      "Ref": "ProductServiceTaskDefExecutionRole06ED1514"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/TaskDef/ExecutionRole/DefaultPolicy/Resource"
+   }
+  },
+  "ProductService74C8BAD6": {
+   "Type": "AWS::ECS::Service",
+   "Properties": {
+    "Cluster": {
+     "Ref": "EcommerceCluster205F87C9"
+    },
+    "DeploymentConfiguration": {
+     "MaximumPercent": 200,
+     "MinimumHealthyPercent": 50
+    },
+    "EnableECSManagedTags": false,
+    "HealthCheckGracePeriodSeconds": 60,
+    "LaunchType": "FARGATE",
+    "LoadBalancers": [
+     {
+      "ContainerName": "web",
+      "ContainerPort": 3000,
+      "TargetGroupArn": {
+       "Ref": "ProductServiceLBPublicListenerECSGroupB86E88AE"
+      }
+     }
+    ],
+    "NetworkConfiguration": {
+     "AwsvpcConfiguration": {
+      "AssignPublicIp": "DISABLED",
+      "SecurityGroups": [
+       {
+        "Fn::GetAtt": [
+         "ProductServiceSecurityGroup41250D39",
+         "GroupId"
+        ]
+       }
+      ],
+      "Subnets": [
+       {
+        "Ref": "EcommerceVpcPrivateSubnet1SubnetED9BECA1"
+       },
+       {
+        "Ref": "EcommerceVpcPrivateSubnet2Subnet046F3A4A"
+       }
+      ]
+     }
+    },
+    "TaskDefinition": {
+     "Ref": "ProductServiceTaskDef7D859D26"
+    }
+   },
+   "DependsOn": [
+    "ProductServiceLBPublicListenerECSGroupB86E88AE",
+    "ProductServiceLBPublicListener0973822B",
+    "ProductServiceTaskDefTaskRole96D10973"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/Service/Service"
+   }
+  },
+  "ProductServiceSecurityGroup41250D39": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "EcommercePlatformStack/ProductService/Service/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "EcommerceVpc78AAEAE5"
+    }
+   },
+   "DependsOn": [
+    "ProductServiceTaskDefTaskRole96D10973"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/Service/SecurityGroup/Resource"
+   }
+  },
+  "ProductServiceSecurityGroupfromEcommercePlatformStackProductServiceLBSecurityGroupC0C08C623000BD8BEFA3": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "FromPort": 3000,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "ProductServiceSecurityGroup41250D39",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "ProductServiceLBSecurityGroup5B07F3A0",
+      "GroupId"
+     ]
+    },
+    "ToPort": 3000
+   },
+   "DependsOn": [
+    "ProductServiceTaskDefTaskRole96D10973"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/ProductService/Service/SecurityGroup/from EcommercePlatformStackProductServiceLBSecurityGroupC0C08C62:3000"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/31SXW+jMBD8LX13fE2ka5/T9EORei0iVV+jxWzoNmAjf1BFiP9+iwmFy53uybPDLOPd8Uoub3/K5RV8uYXKj4uSMtnuPKijYGrfolrJ9r1WYnPQ78lGJCErSe1CptH33IRSEzy+QVbixE/c2jmjCDwZ/S3uwcM26Y8X8E/g8QtOIrHUMJx+vNUeLeNRMNzkXK093/WjQu3FDlWw5E9P1oQ63uG/xENh0bm/6K2OfCdQOdluyuDYvVeN8BFsAf1U7niPB9I0znTJGO2BNNoZd+7doW1IDXsaYLTb1+D7UZ1c1zVvOW7r2UB+ByVohflFO5bgPKmSFVlUkC4ajuvf3XGIP+q5jng2fdaMePb9jZ05gXGRs7ITBJVsUzPkHs/EcF8MakD9dHYPzqF38t6oI9ptBUX/KDhi/iZTrI0jb+zpDhyK0hS8/GdTfDuOuOtEis4E26+PAzHVVLL7DP+CuuaFXKgSaxrK0Uab6M+PvYi6g34Nvg7xzXF4eYysE9rkKD/dj2Z5I1fX8vrq0xEtbNCeKpTpcP4GfA0brkcDAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "EcommercePlatformStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Mappings": {
+  "LatestNodeRuntimeMap": {
+   "af-south-1": {
+    "value": "nodejs20.x"
+   },
+   "ap-east-1": {
+    "value": "nodejs20.x"
+   },
+   "ap-northeast-1": {
+    "value": "nodejs20.x"
+   },
+   "ap-northeast-2": {
+    "value": "nodejs20.x"
+   },
+   "ap-northeast-3": {
+    "value": "nodejs20.x"
+   },
+   "ap-south-1": {
+    "value": "nodejs20.x"
+   },
+   "ap-south-2": {
+    "value": "nodejs20.x"
+   },
+   "ap-southeast-1": {
+    "value": "nodejs20.x"
+   },
+   "ap-southeast-2": {
+    "value": "nodejs20.x"
+   },
+   "ap-southeast-3": {
+    "value": "nodejs20.x"
+   },
+   "ap-southeast-4": {
+    "value": "nodejs20.x"
+   },
+   "ap-southeast-5": {
+    "value": "nodejs20.x"
+   },
+   "ap-southeast-7": {
+    "value": "nodejs20.x"
+   },
+   "ca-central-1": {
+    "value": "nodejs20.x"
+   },
+   "ca-west-1": {
+    "value": "nodejs20.x"
+   },
+   "cn-north-1": {
+    "value": "nodejs18.x"
+   },
+   "cn-northwest-1": {
+    "value": "nodejs18.x"
+   },
+   "eu-central-1": {
+    "value": "nodejs20.x"
+   },
+   "eu-central-2": {
+    "value": "nodejs20.x"
+   },
+   "eu-north-1": {
+    "value": "nodejs20.x"
+   },
+   "eu-south-1": {
+    "value": "nodejs20.x"
+   },
+   "eu-south-2": {
+    "value": "nodejs20.x"
+   },
+   "eu-west-1": {
+    "value": "nodejs20.x"
+   },
+   "eu-west-2": {
+    "value": "nodejs20.x"
+   },
+   "eu-west-3": {
+    "value": "nodejs20.x"
+   },
+   "il-central-1": {
+    "value": "nodejs20.x"
+   },
+   "me-central-1": {
+    "value": "nodejs20.x"
+   },
+   "me-south-1": {
+    "value": "nodejs20.x"
+   },
+   "mx-central-1": {
+    "value": "nodejs20.x"
+   },
+   "sa-east-1": {
+    "value": "nodejs20.x"
+   },
+   "us-east-1": {
+    "value": "nodejs20.x"
+   },
+   "us-east-2": {
+    "value": "nodejs20.x"
+   },
+   "us-west-1": {
+    "value": "nodejs20.x"
+   },
+   "us-west-2": {
+    "value": "nodejs20.x"
+   }
+  }
+ },
+ "Outputs": {
+  "ProductServiceLoadBalancerDNSA04CAF78": {
+   "Value": {
+    "Fn::GetAtt": [
+     "ProductServiceLB0336FA88",
+     "DNSName"
+    ]
+   }
+  },
+  "ProductServiceServiceURL62291D92": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "http://",
+      {
+       "Fn::GetAtt": [
+        "ProductServiceLB0336FA88",
+        "DNSName"
+       ]
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

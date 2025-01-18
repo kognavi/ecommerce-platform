@@ -1,0 +1,52 @@
+// src/data/products.ts
+
+import { Product } from '../types';
+
+// ダミーデータの作成
+export const products: Product[] = [
+  {
+    id: 1,
+    name: "ノートパソコン",
+    price: 89800,
+    description: "高性能な最新モデルのノートパソコン",
+    stock: 50,
+    createdAt: new Date('2024-01-01'),
+    updatedAt: new Date('2024-01-01')
+  },
+  {
+    id: 2,
+    name: "スマートフォン",
+    price: 79800,
+    description: "最新のスマートフォン",
+    stock: 100,
+    createdAt: new Date('2024-01-02'),
+    updatedAt: new Date('2024-01-02')
+  },
+  {
+    id: 3,
+    name: "ワイヤレスイヤホン",
+    price: 19800,
+    description: "高音質なワイヤレスイヤホン",
+    stock: 30,
+    createdAt: new Date('2024-01-03'),
+    updatedAt: new Date('2024-01-03')
+  },
+  {
+    id: 4,
+    name: "タブレット",
+    price: 49800,
+    description: "10インチの大画面タブレット",
+    stock: 25,
+    createdAt: new Date('2024-01-04'),
+    updatedAt: new Date('2024-01-04')
+  },
+  {
+    id: 5,
+    name: "スマートウォッチ",
+    price: 29800,
+    description: "健康管理機能付きスマートウォッチ",
+    stock: 45,
+    createdAt: new Date('2024-01-05'),
+    updatedAt: new Date('2024-01-05')
+  }
+];
