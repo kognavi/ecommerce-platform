@@ -1,0 +1,15 @@
+// src/contexts/AuthContext.tsx を作成して認証状態を管理
+const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
+
+// ルートの保護
+<Route
+  path="/orders"
+  element={
+    <PrivateRoute>
+      <OrderHistory />
+    </PrivateRoute>
+  }
+/>

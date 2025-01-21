@@ -752,7 +752,7 @@
      {
       "Essential": true,
       "Image": {
-       "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:6afe3b897290469d7e75a0ad8c7058c11c65c4d4194341c1490efa302aa8ea53"
+       "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:99beb4bda87749cd24054a6c6e4895b024d3ca295177af7209d59ad7c61040d2"
       },
       "LogConfiguration": {
        "LogDriver": "awslogs",
@@ -1003,7 +1003,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/31SXW+jMBD8LX13fE2ka5/T9EORei0iVV+jxWzoNmAjf1BFiP9+iwmFy53uybPDLOPd8Uoub3/K5RV8uYXKj4uSMtnuPKijYGrfolrJ9r1WYnPQ78lGJCErSe1CptH33IRSEzy+QVbixE/c2jmjCDwZ/S3uwcM26Y8X8E/g8QtOIrHUMJx+vNUeLeNRMNzkXK093/WjQu3FDlWw5E9P1oQ63uG/xENh0bm/6K2OfCdQOdluyuDYvVeN8BFsAf1U7niPB9I0znTJGO2BNNoZd+7doW1IDXsaYLTb1+D7UZ1c1zVvOW7r2UB+ByVohflFO5bgPKmSFVlUkC4ajuvf3XGIP+q5jng2fdaMePb9jZ05gXGRs7ITBJVsUzPkHs/EcF8MakD9dHYPzqF38t6oI9ptBUX/KDhi/iZTrI0jb+zpDhyK0hS8/GdTfDuOuOtEis4E26+PAzHVVLL7DP+CuuaFXKgSaxrK0Uab6M+PvYi6g34Nvg7xzXF4eYysE9rkKD/dj2Z5I1fX8vrq0xEtbNCeKpTpcP4GfA0brkcDAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/31SwW7bMAz9lt4dbQlQbNc07YoA3WbYRa8BLTMuG1kyRMpBYPjfB8tJ7GbDTnx8ehT1SK3U8tu9Wt7BkRe6PCwMFarLBfQhgSPvOtQr1b01Otns7Vu6SdJQGNJ5KCzKwE0oc0HwFQqDEz9xa2anCYScvYoH8LRNh/AL5BkEj3BKUk8tCE4Xb62gt3gVjC85Z2sR0O81Wkly1MGTnJ69C018w3+Jp8oj81/01ka+T1Cz6jYmsKAfVBf4A3wFgys+POKeLF083TLOCpBFP+POtTn6lvQ4pxHGdrsGZLDKat00hnSc1ouD8gEMWI3lTTkaYCFtHJRFVJCt2pXq/l0dTXzK5zpiQXvWXPDs/BV8hXId5CztE4JadZkb9x5j6gzpuKgRDe78DphRWD06fUC/raEaPgXKcKYybByTOH96AMbEuIpV9+Kqa8cL7vskQ3bBD+MLLK6e0r2d45/QNGSrG1XqXUsl+tgm9s8Fqqjb299BmhD/3MbZMq6sT6wrUX3wl3b1VS2/q+XdBxMtfLBCNapsjH8AsblU4EcDAAA="
    },
    "Metadata": {
     "aws:cdk:path": "EcommercePlatformStack/CDKMetadata/Default"

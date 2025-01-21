@@ -5,10 +5,15 @@
     "ecommerce-platform": "bin/ecommerce-platform.js"
   },
   "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:preview": "cd frontend && npm run preview",
+    "frontend:lint": "cd frontend && npm run lint",
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "postinstall": "cd frontend && npm install"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
@@ -41,6 +46,7 @@
   "description": "This is a blank project for CDK development with TypeScript.",
   "main": "jest.config.js",
   "directories": {
+    "doc": "docs",
     "lib": "lib",
     "test": "test"
   },
@@ -48,3 +54,4 @@
   "author": "",
   "license": "ISC"
 }
+
