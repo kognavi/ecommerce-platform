@@ -1,52 +1,50 @@
-// src/utils/errors.ts
 export class APIError extends Error {
-    constructor(
-      message: string,
-      public status?: number,
-      public code?: string
-    ) {
-      super(message);
-      this.name = 'APIError';
-    }
+  constructor(
+    message: string,
+    public statusCode: number,
+    public code: string
+  ) {
+    super(message);
+    this.name = this.constructor.name;
+    Error.captureStackTrace(this, this.constructor);
   }
-  
-  // src/components/ErrorBoundary.tsx
-  import React, { Component, ErrorInfo, ReactNode } from 'react';
-  
-  interface Props {
-    children: ReactNode;
-    fallback?: ReactNode;
+}
+
+// HTTP 400系エラー
+export class BadRequestError extends APIError {
+  constructor(message = 'Bad Request') {
+    super(message, 400, 'BAD_REQUEST');
   }
-  
-  interface State {
-    hasError: boolean;
-    error?: Error;
+}
+
+export class UnauthorizedError extends APIError {
+  constructor(message = 'Unauthorized') {
+    super(message, 401, 'UNAUTHORIZED');
   }
-  
-  export class ErrorBoundary extends Component<Props, State> {
-    public state: State = {
-      hasError: false
-    };
-  
-    public static getDerivedStateFromError(error: Error): State {
-      return { hasError: true, error };
-    }
-  
-    public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-      console.error('エラーが発生しました:', error, errorInfo);
-    }
-  
-    public render() {
-      if (this.state.hasError) {
-        return this.props.fallback || (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-            <h2 className="text-red-800 font-bold mb-2">エラーが発生しました</h2>
-            <p className="text-red-600">{this.state.error?.message}</p>
-          </div>
-        );
-      }
-  
-      return this.props.children;
-    }
+}
+
+export class ForbiddenError extends APIError {
+  constructor(message = 'Forbidden') {
+    super(message, 403, 'FORBIDDEN');
   }
-  
+}
+
+export class NotFoundError extends APIError {
+  constructor(message = 'Not Found') {
+    super(message, 404, 'NOT_FOUND');
+  }
+}
+
+// HTTP 500系エラー
+export class InternalServerError extends APIError {
+  constructor(message = 'Internal Server Error') {
+    super(message, 500, 'INTERNAL_SERVER_ERROR');
+  }
+}
+
+// バリデーションエラー
+export class ValidationError extends APIError {
+  constructor(message = 'Validation Error') {
+    super(message, 422, 'VALIDATION_ERROR');
+  }
+}
