@@ -1,3 +1,6 @@
+# 1. 現在の main.yml の内容を新しい設定に更新
+# main.yml を開いて、以下の内容に置き換えてください：
+
 name: CI Pipeline
 
 on:
