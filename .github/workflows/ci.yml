@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   build-and-test:
@@ -24,16 +24,21 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
+      working-directory: ./frontend
       run: npm ci
 
     - name: Type check
+      working-directory: ./frontend
       run: npm run type-check
 
     - name: Build
+      working-directory: ./frontend
       run: npm run build
 
     - name: Run tests
+      working-directory: ./frontend
       run: npm test
 
     - name: Lint check
+      working-directory: ./frontend
       run: npm run lint
