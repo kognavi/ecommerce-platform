@@ -1,4 +1,4 @@
-name: TypeScript CI
+name: CI Pipeline
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,18 +16,29 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    
+
     - name: Install dependencies
+      working-directory: ./frontend
       run: npm ci
-    
+
     - name: Type check
+      working-directory: ./frontend
       run: npm run type-check
-    
+
     - name: Build
+      working-directory: ./frontend
       run: npm run build
+
+    - name: Run tests
+      working-directory: ./frontend
+      run: npm test
+
+    - name: Lint check
+      working-directory: ./frontend
+      run: npm run lint
