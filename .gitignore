@@ -19,3 +19,4 @@ coverage/
 .local/
 *.log
 cdk.out/
+*.tsbuildinfo
