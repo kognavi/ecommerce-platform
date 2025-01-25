@@ -1,21 +1,14 @@
-// src/types/order.ts
+export interface Order {
+  orderId: string;
+  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  items: OrderItem[];
+  total: number;
+  createdAt: string;
+}
+
 export interface OrderItem {
-    id: string;
-    name: string;
-    quantity: number;
-    price: number;
-  }
-  
-  export interface Order {
-    orderId: string;
-    userId: string;
-    name: string;
-    email: string;
-    address: string;
-    items: OrderItem[];
-    total: number;
-    status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-    createdAt: string;
-    updatedAt: string;
-  }
-  
+  id: string;
+  product: Product;
+  quantity: number;
+  price: number;
+}
