@@ -18,12 +18,16 @@
     "types": ["vite/client"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "baseUrl": "./frontend",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src"],
+  "include": ["frontend/src"],
   "references": [
     { "path": "./tsconfig.node.json" }
   ]
